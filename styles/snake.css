@@ -1,0 +1,79 @@
+h1{
+    font-family: 'Press Start 2P', cursive;
+    background: -webkit-linear-gradient(#FF891C, #DD201C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body{
+    background: #444;
+}
+
+#board{
+    border: solid 1px #444;
+}
+
+#game-area{
+    margin:0 auto;
+    width:750px;
+}
+
+table, th, td{
+    /*border: 1px solid #cdd5ac;*/
+
+}
+
+#info-area{
+    color:#0f0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+td {
+    width:25px;
+    height:25px;
+}
+
+table {
+    border-collapse:collapse;
+    background-color:#a8c7b8;
+    background-image:url("../images/dirt.png");
+}
+
+.snake-head {
+    background-image: url("../images/OnixHead.png");
+    background-size: 100% auto;
+    background-repeat:no-repeat;
+}
+
+.snake-body {
+    background-image: url("../images/OnixBody.png");
+    background-size: 100% auto;
+    background-repeat:no-repeat;
+}
+
+.food {
+    background-image: url("../images/OranBerry.png");
+    background-size: 100% auto;
+    background-repeat:no-repeat;
+}
+
+ul {
+   list-style-type: none;
+}
+
+li{
+    border: solid 1px #4297D7;
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    background: linear-gradient(#6DA7D2, #fff);
+    color: #fff;
+}
+
+li:hover{
+    background: linear-gradient(#25E014, #fff);
+}
