@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Snake</title>
+        <link href='http://fonts.googleapis.com/css?family=Vampiro+One' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css"  href="styles/snake.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css">
+        <script type="text/javascript" src="script/jquery.js"></script>
+        <script type="text/javascript" src="script/jquery-ui-1.10.3.custom.js"></script>
+        <script type="text/javascript" src="script/Snake.js"></script>
+        <script type="text/javascript" src="script/Board.js"></script>
+        <script type="text/javascript" src="script/GameState.js"></script>
+        <script type="text/javascript" src="script/ClientSaveUtility.js"></script>
+        <script type="text/javascript" src="script/GamePlay.js"></script>
+    </head>
+
+    <body>
+        <div id="game-area">
+            <h1>Serpent's Quest</h1>
+            <div id="info-area">
+                <div>
+                    <div id="player-name">Player 1</div>
+                    <div id="opponent-name"></div>
+                </div>
+                <div>
+                    <label for="score">Score:</label><span id="score">0</span>
+                </div>
+            </div>
+            <div id="board-area"></div>
+        </div>
+        <div id="death-dialog" title="Failure">
+            <p id="death-message"></p>
+        </div>
+        <div id="name-dialog" title="Choose a Name" style="display:none;">
+            <label for="name-input">Name</label>
+            <input type="text" name="name-input" id="name-input" class="text ui-widget-content ui-corner-all">
+        </div>
+        <div id="shop-dialog" title="Snakes-R-Us">
+        </div>
+        <div id="saved-name-dialog" title="Choose a file" style="display:none;">
+            <div>Continue with an existing game or click New Game:</div>
+            <div id="saved-names">
+            </div>
+        </div>
+        <div id="high-score-dialog" title="New Personal Best!" style="display:none;">
+            <div id="high-score-message">Congratulations! It's a new personal best!</div>
+            <div id="high-score">
+            </div>
+        </div>
+        <audio id="bite1" preload="auto">
+            <source src="sounds/comic-bite-1.wav" type="audio/wav" />
+            <source src="sounds/comic-bite-1.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="bite2" preload="auto">
+            <source src="sounds/comic-bite-2.wav" type="audio/wav" />
+            <source src="sounds/comic-bite-2.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="scream1" preload="auto">
+            <source src="sounds/scream.ogg" type="audio/ogg" />
+        </audio>
+    </body>
+</html>
