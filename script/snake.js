@@ -2,6 +2,7 @@
 * The Snake class represents the base functionality of a snake game element.  It is responsible for keeping track
 * of the location of its body parts and updating their coordinates as the snake moves around the game board.
 */
+//Will this do anything?
 
 function Snake (){
     this.body = new Array();
