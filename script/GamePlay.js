@@ -13,7 +13,6 @@ var rowCount = 30;
 var colCount = 30;
 var gameState = new GameState(rowCount, colCount);
 var intervalLength = 100;
-var playerName = "Player 1";
 
 // A string that represents the direction that the snake's head is moving.  Valid values are 'up', 'down', 'left', 'right', and 'none'
 var snakeDirection;
@@ -22,8 +21,8 @@ var snake = new Snake();
 $(function () {
     board = new Board(rowCount, colCount);
     board.$constructBoard().appendTo("#board-area");
+    $('#player-name').text(ClientSaveUtility.getPlayerName());
     setControls();
-    getName();
     resetGame();
 });
 
@@ -44,65 +43,6 @@ function setControls(){
                 break;
         }
     });
-}
-
-function getName(){
-    if(ClientSaveUtility.hasSavedNames()){
-        selectSavedName();
-    }
-    else{
-        getNameFromUser();
-    }
-}
-
-function selectSavedName(){
-    addSavedNamesToDialog();
-
-    $("#saved-name-dialog").dialog({
-        resizable: false,
-        modal: true,
-        width: 500,
-        buttons: {
-            "New Game": function () {
-                $(this).dialog("close");
-                getNameFromUser();
-            }
-        }
-    });
-}
-
-function addSavedNamesToDialog(){
-    var savedNames = ClientSaveUtility.getSavedNames();
-
-    $nameList = $('<ul />', {'id': 'saved-name-list'});
-    for(var i = 0; i < savedNames.length; i++){
-        $('<li />', {'text': savedNames[i]}).on('click', function(){
-            setUserName($(this).text());
-            $("#saved-name-dialog").dialog('close');
-        }).appendTo($nameList);
-    }
-
-    $nameList.appendTo('#saved-names');
-}
-
-function getNameFromUser(){
-    $("#name-dialog").dialog({
-        resizable: false,
-        modal: true,
-        buttons: {
-            "Start": function () {
-                var newName = $('#name-input').val();
-                setUserName(newName);
-                ClientSaveUtility.addPlayer(newName);
-                $(this).dialog("close");
-            }
-        }
-    });
-}
-
-function setUserName(name){
-    $('#player-name').text(name);
-    playerName = name;
 }
 
 function playRandomSound(sound, count){

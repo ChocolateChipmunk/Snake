@@ -7,10 +7,34 @@
     <link href='http://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css"  href="styles/snake.css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="script/ClientSaveUtility.js"></script>
+    <script type="text/javascript" src="script/NameUtility.js"></script>
+    <script type="text/javascript">
+$(function(){
+    $('#continue-button').on('click', function(){
+        selectSavedName();
+    });
+
+    $('#new-button').on('click', function(){
+        getNameFromUser();
+    });
+})
+    </script>
 </head>
 <body>
     <h1>Welcome to Serpent's Quest</h1>
-    <a href="snake.html">Continue</a>
-    <a href="snake.html">New Game</a>
+    <span id="continue-button" href="snake.html">Continue</span>
+    <span id="new-button" href="snake.html">New Game</span>
+    <div id="saved-name-dialog" title="Choose a file" style="display:none;">
+        <div>Continue with an existing game or click New Game:</div>
+        <div id="saved-names">
+        </div>
+    </div>
+    <div id="name-dialog" title="Choose a Name" style="display:none;">
+        <label for="name-input">Name</label>
+        <input type="text" name="name-input" id="name-input" class="text ui-widget-content ui-corner-all">
+    </div>
 </body>
 </html>

@@ -98,6 +98,14 @@ var ClientSaveUtility = (function () {
             playerData.totalPoints += score;
 
             setPlayerData(playerName, playerData);
+        },
+
+        setPlayerName: function(playerName){
+            sessionStorage.setItem('playerName', playerName);
+        },
+
+        getPlayerName: function(){
+            return sessionStorage.getItem('playerName');
         }
     };
 })();
