@@ -116,13 +116,6 @@ function setFoodCountDown() {
     foodCountDown = Math.floor(Math.random() * 24)+1;
 }
 
-function getNewFoodCoordinates() {
-    return {
-        row: Math.floor(Math.random() * rowCount),
-        col: Math.floor(Math.random() * colCount)
-    };
-}
-
 function updateBoard(gameState) {
     var $boardSpaces = $("#board td");
     $boardSpaces.removeClass('snake-body');
@@ -160,8 +153,8 @@ function moveSnake(direction) {
     if (gameState.spaceContainsSnakeBody(newCoordinates.row, newCoordinates.col)) {
         clearInterval(gameTimer);
         playRandomSound('scream', 1);
-        if(score > ClientSaveUtility.getPersonalBest(playerName)){
-            ClientSaveUtility.setPersonalBest(playerName, score);
+        if(score > ClientSaveUtility.getPersonalBest(ClientSaveUtility.getPlayerName())){
+            ClientSaveUtility.setPersonalBest(ClientSaveUtility.getPlayerName(), score);
             displayHighScore();
         }
         else{
@@ -210,15 +203,7 @@ function displayDeathMessage(){
         buttons: {
             "Shop": function () {
                 $(this).dialog("close");
-                $('#shop-dialog').dialog({
-                    modal: true,
-                    buttons: {
-                        "Done Shopping": function () {
-                            resetGame();
-                            $(this).dialog("close");
-                        }
-                    }
-                });
+                window.location.replace("shop.html");
             },
             "Play Again": function () {
                 resetGame();

@@ -8,6 +8,7 @@ function GameState (rowCount, colCount){
     this.rowCount = rowCount;
     this.colCount = colCount;
     this.state = new Array();
+    this.snake = [];
 
     for(var row = 0; row < rowCount; row++){
         var rowArray = new Array();
@@ -17,6 +18,31 @@ function GameState (rowCount, colCount){
         }
 
         this.state.push(rowArray);
+    }
+
+    function getNewFoodCoordinates() {
+        return {
+            row: Math.floor(Math.random() * rowCount),
+            col: Math.floor(Math.random() * colCount)
+        };
+    }
+
+    this.addFood = function () {
+        var coordinates = this.getNewFoodCoordinates();
+        this.state[coordinates.row][coordinates.col] = 2;
+    }
+
+    this.addSnake = function (snake) {
+        this.snake = snake;
+
+        for (var i = 0; i < snake.length; i++) {
+            if (i == 0) {
+                this.state[snake.body[i].row][snake.body[i].col] = 3;
+            }
+            else {
+                this.state[snake.body[i].row][snake.body[i].col] = 1;
+            }
+        }
     }
 }
 
@@ -32,21 +58,6 @@ GameState.prototype.removeSnake = function (snake) {
     for (var i = 0; i < snake.length; i++) {
         this.state[snake.body[i].row][snake.body[i].col] = 0;
     }
-}
-
-GameState.prototype.addSnake = function (snake) {
-    for (var i = 0; i < snake.length; i++) {
-        if (i == 0) {
-            this.state[snake.body[i].row][snake.body[i].col] = 3;
-        }
-        else {
-            this.state[snake.body[i].row][snake.body[i].col] = 1;
-        }
-    }
-}
-
-GameState.prototype.addFood = function (row, col) {
-    this.state[row][col] = 2;
 }
 
 GameState.prototype.removeFood = function (row, col) {
